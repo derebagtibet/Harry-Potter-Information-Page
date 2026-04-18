@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #070503;
+    color: #f5e6c8;
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+    /* Subtle parchment noise texture via CSS */
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(116, 0, 1, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(26, 71, 42, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d0a07;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c9a84c;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: rgba(201,168,76,0.3);
+    color: #f0d080;
+  }
+}
+
+@layer components {
+  /* Gold shimmer text effect */
+  .text-gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      #c9a84c 0%,
+      #f0d080 25%,
+      #e8c860 50%,
+      #f0d080 75%,
+      #c9a84c 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Parchment card style */
+  .card-parchment {
+    background: linear-gradient(135deg, #1a1510 0%, #141008 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-parchment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(201,168,76,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Candle flame element */
+  .candle-flame {
+    display: inline-block;
+    animation: candle 2s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+    filter: drop-shadow(0 0 6px rgba(255, 150, 50, 0.8));
+  }
+
+  /* House badge colors */
+  .badge-gryffindor { background: rgba(116,0,1,0.3); border-color: rgba(174,0,1,0.5); color: #ff8080; }
+  .badge-slytherin { background: rgba(26,71,42,0.3); border-color: rgba(42,120,74,0.5); color: #80ff80; }
+  .badge-ravenclaw { background: rgba(14,26,64,0.3); border-color: rgba(34,66,154,0.5); color: #80a0ff; }
+  .badge-hufflepuff { background: rgba(180,143,41,0.3); border-color: rgba(236,185,57,0.5); color: #ffd080; }
+
+  /* Divider with wand sparks */
+  .divider-magic {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .divider-magic::before,
+  .divider-magic::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
+  }
+
+  /* Spell button */
+  .btn-spell {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-spell::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    border-radius: 50%;
+  }
+
+  .btn-spell:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Fade in animation for cards */
+  .animate-fade-in {
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  /* Stagger children */
+  .stagger-children > *:nth-child(1) { animation-delay: 0s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.05s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.15s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.25s; }
+  .stagger-children > *:nth-child(7) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(8) { animation-delay: 0.35s; }
+  .stagger-children > *:nth-child(9) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(10) { animation-delay: 0.45s; }
+  .stagger-children > *:nth-child(n+11) { animation-delay: 0.5s; }
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes candle {
+  from { transform: scaleX(1) rotate(-1.5deg); }
+  to { transform: scaleX(0.93) rotate(1.5deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sparkleIn {
+  0% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+}
+
+/* Particles floating effect */
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #c9a84c;
+  border-radius: 50%;
+  animation: float linear infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+}
