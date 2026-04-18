@@ -6,7 +6,6 @@ export default function LoadingSpell({ message = 'Casting spell...' }) {
       <div className="relative w-20 h-20">
         <div
           className="absolute inset-0 rounded-full border-2 border-hp-gold/20"
-          style={{ borderTopColor: '#c9a84c' }}
           style={{
             borderColor: 'rgba(201,168,76,0.2)',
             borderTopColor: '#c9a84c',
