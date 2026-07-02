@@ -2,6 +2,10 @@
 
 A visually stunning, fully responsive Harry Potter Wiki built with **React + Vite + Tailwind CSS**.
 
+## 🔗 Live Site
+
+**[Visit the live site here](https://harry-potter-information-page-sdnc.vercel.app/)**
+
 ## 🪄 Features
 
 - **Characters** — Browse 400+ wizards, witches & creatures with house filtering, role filtering, text search, and pagination. Click any character for a full detail page.
